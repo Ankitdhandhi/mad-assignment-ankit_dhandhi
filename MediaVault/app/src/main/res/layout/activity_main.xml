@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F0F0F">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MediaVault"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#E0E0E0"
+        android:padding="20dp"/>
+
+    <!-- Video surface -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="#1A1A1A"
+        app:use_controller="false"/>
+
+    <!-- Mode tabs -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnModeAudio"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:text="🎵 Audio"
+            android:textSize="13sp"
+            android:layout_marginEnd="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnModeVideo"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:text="🎬 Video URL"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <!-- Open file / URL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUrl"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Video URL"
+            android:visibility="gone"
+            android:layout_marginEnd="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOpenFile"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Open File"
+            android:textColor="#BB86FC"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOpenUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Load URL"
+            android:layout_marginStart="8dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <!-- Now playing -->
+    <TextView
+        android:id="@+id/tvNowPlaying"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No media loaded"
+        android:textColor="#9E9E9E"
+        android:textSize="13sp"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"/>
+
+    <!-- Progress -->
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="4dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="12dp">
+        <TextView android:id="@+id/tvPosition"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="0:00" android:textColor="#9E9E9E" android:textSize="12sp"/>
+        <TextView android:id="@+id/tvDuration"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="0:00" android:textColor="#9E9E9E" android:textSize="12sp"/>
+    </LinearLayout>
+
+    <!-- Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPlay"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:text="▶ Play"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPause"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:text="⏸ Pause"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStop"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:text="⏹ Stop"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRestart"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:text="↺ Restart"/>
+    </LinearLayout>
+</LinearLayout>
