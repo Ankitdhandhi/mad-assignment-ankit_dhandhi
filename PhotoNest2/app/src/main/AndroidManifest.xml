@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32"/>
@@ -8,13 +9,15 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28"/>
 
+    <!-- Camera feature -->
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
 
     <application
         android:allowBackup="true"
         android:label="PhotoNest"
-        android:theme="@style/Theme.Material3.DayNight">
+        android:theme="@style/Theme.PhotoNest"> <!-- ✅ FIXED THEME -->
 
+        <!-- Main Activity -->
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -22,9 +25,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Other Activities -->
         <activity android:name=".GalleryActivity" android:exported="false"/>
         <activity android:name=".ImageDetailActivity" android:exported="false"/>
 
+        <!-- ✅ FileProvider (already correct) -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -34,5 +39,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+
     </application>
+
 </manifest>
